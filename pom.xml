@@ -10,6 +10,7 @@
 
     <properties>
         <dropwizard.version>0.7.1</dropwizard.version>
+        <flyway.version>0.7.0-1</flyway.version>
     </properties>
 
     <dependencies>
@@ -18,7 +19,12 @@
             <artifactId>dropwizard-core</artifactId>
             <version>${dropwizard.version}</version>
         </dependency>
-    </dependencies>
 
+        <dependency>
+            <groupId>io.dropwizard.modules</groupId>
+            <artifactId>dropwizard-flyway</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+    </dependencies>
     
 </project>

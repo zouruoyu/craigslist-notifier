@@ -6,6 +6,9 @@
  */
 
 import io.dropwizard.Application;
+import io.dropwizard.db.DataSourceFactory;
+import io.dropwizard.flyway.FlywayBundle;
+import io.dropwizard.flyway.FlywayFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -22,7 +25,17 @@ public class CraigslistApplication extends Application<CraigslistConfiguration> 
 
     @Override
     public void initialize(Bootstrap<CraigslistConfiguration> bootstrap) {
-        // nothing to do yet
+        bootstrap.addBundle(new FlywayBundle<CraigslistConfiguration>() {
+            @Override
+            public DataSourceFactory getDataSourceFactory(CraigslistConfiguration configuration) {
+                return configuration.getDataSourceFactory();
+            }
+
+            @Override
+            public FlywayFactory getFlywayFactory(CraigslistConfiguration configuration) {
+                return configuration.getFlywayFactory();
+            }
+        });
     }
 
     @Override

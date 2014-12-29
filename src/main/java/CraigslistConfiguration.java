@@ -8,6 +8,8 @@
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
+import io.dropwizard.db.DataSourceFactory;
+import io.dropwizard.flyway.FlywayFactory;
 
 public class CraigslistConfiguration extends Configuration {
 
@@ -17,5 +19,13 @@ public class CraigslistConfiguration extends Configuration {
     @JsonCreator
     public CraigslistConfiguration(@JsonProperty("name") String name) {
         this.name = name;
+    }
+
+    public DataSourceFactory getDataSourceFactory() {
+        return new DataSourceFactory();
+    }
+
+    public FlywayFactory getFlywayFactory() {
+        return new FlywayFactory();
     }
 }
