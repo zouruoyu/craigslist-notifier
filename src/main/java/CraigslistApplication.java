@@ -35,6 +35,9 @@ public class CraigslistApplication extends Application<CraigslistConfiguration> 
             public FlywayFactory getFlywayFactory(CraigslistConfiguration configuration) {
                 return configuration.getFlywayFactory();
             }
+
+            @Override
+            public
         });
     }
 
