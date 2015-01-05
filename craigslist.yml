@@ -1,1 +1,14 @@
 name: craigslist-notifier
+postgresConfiguration:
+  checkConnectionWhileIdle: true
+  driverClass: org.postgresql.Driver
+  maxSize: 50
+  maxWaitForConnection: 2s
+  minSize: 8
+  password: XXXX
+  url: jdbc:mysql://XXX.com/db_name?useCursorFetch=true
+  user: XXXXX
+  validationQuery: /* Health Check */ SELECT 1
+flywayFactory:
+  schemas:
+    - craigslist

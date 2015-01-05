@@ -35,15 +35,14 @@ public class CraigslistApplication extends Application<CraigslistConfiguration> 
             public FlywayFactory getFlywayFactory(CraigslistConfiguration configuration) {
                 return configuration.getFlywayFactory();
             }
-
-            @Override
-            public
         });
     }
 
     @Override
     public void run(CraigslistConfiguration configuration, Environment environment) {
+        System.out.println(configuration);
         final CraigslistResource resource = new CraigslistResource();
-        environment.jersey().register(resource);    }
+        environment.jersey().register(resource);
+    }
 
 }

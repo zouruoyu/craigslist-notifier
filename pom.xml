@@ -11,6 +11,7 @@
     <properties>
         <dropwizard.version>0.7.1</dropwizard.version>
         <flyway.version>0.7.0-1</flyway.version>
+        <postgres.version>9.3-1101-jdbc41</postgres.version>
     </properties>
 
     <dependencies>
@@ -24,6 +25,13 @@
             <groupId>io.dropwizard.modules</groupId>
             <artifactId>dropwizard-flyway</artifactId>
             <version>${flyway.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId> <!-- For postgreSQL driver -->
+            <artifactId>postgresql</artifactId>
+            <version>${postgres.version}</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
     
