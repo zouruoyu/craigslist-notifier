@@ -1,0 +1,14 @@
+group sql;
+
+insert_search_query() ::= <<
+insert into craigslist.search_query (keyword, min_price, max_price, created_at, updated_at) values (:keyword, :min_price, :max_price, current_timestamp, current_timestamp)
+returning id, keyword, min_price, max_price, created_at, updated_at
+>>
+
+get_all_search_queries() ::= <<
+select * from craigslist.search_query
+>>
+
+delete_one_search_query() ::= <<
+delete from craigslist.search_query where id = :id
+>>

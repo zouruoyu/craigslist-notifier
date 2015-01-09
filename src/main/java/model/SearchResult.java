@@ -1,17 +1,17 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.Objects;
 import org.joda.time.DateTime;
 
 import javax.validation.constraints.NotNull;
 
-/**
- * Created with IntelliJ IDEA.
- * User: roy
- * Date: 12/28/14
- * Time: 10:09 PM
- */
+
 public class SearchResult {
+
+    @NotNull
+    @JsonProperty
+    private long id;
     @NotNull
     @JsonProperty
     private String title;
@@ -31,12 +31,18 @@ public class SearchResult {
     @JsonProperty
     private DateTime postedTime;
 
-    public SearchResult(String title, String description, double price, String url, DateTime postedTime) {
+    public SearchResult(long id, String title, String description, double price, String url, DateTime postedTime) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
         this.url = url;
         this.postedTime = postedTime;
+    }
+
+    @JsonProperty
+    public long getId() {
+        return id;
     }
 
     @JsonProperty
@@ -65,13 +71,15 @@ public class SearchResult {
     }
 
     @Override
-    public String toString() {
-        return "Listing{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", url='" + url + '\'' +
-                ", postedTime=" + postedTime +
-                '}';
+    public String toString()
+    {
+        return Objects.toStringHelper(this)
+                .add("id", id)
+                .add("title", title)
+                .add("description", description)
+                .add("price", price)
+                .add("url", url)
+                .add("postedTime", postedTime)
+                .toString();
     }
 }

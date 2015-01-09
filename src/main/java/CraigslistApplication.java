@@ -5,12 +5,15 @@
  * Time: 9:58 PM
  */
 
+import dao.CraigslistDao;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.flyway.FlywayBundle;
 import io.dropwizard.flyway.FlywayFactory;
+import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.skife.jdbi.v2.DBI;
 
 
 public class CraigslistApplication extends Application<CraigslistConfiguration> {
@@ -39,10 +42,14 @@ public class CraigslistApplication extends Application<CraigslistConfiguration> 
     }
 
     @Override
-    public void run(CraigslistConfiguration configuration, Environment environment) {
-        System.out.println(configuration);
-        final CraigslistResource resource = new CraigslistResource();
+    public void run(CraigslistConfiguration configuration, Environment environment) throws ClassNotFoundException {
+        final CraigslistResource resource = new CraigslistResource(new CraigslistDao(getDbi(configuration, environment)));
         environment.jersey().register(resource);
+    }
+
+    private DBI getDbi(CraigslistConfiguration configuration, Environment environment) throws ClassNotFoundException{
+        DBIFactory factory = new DBIFactory();
+        return factory.build(environment, configuration.getDataSourceFactory(), "postgres-dib");
     }
 
 }

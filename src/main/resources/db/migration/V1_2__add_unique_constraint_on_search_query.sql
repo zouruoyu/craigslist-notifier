@@ -1,0 +1,1 @@
+alter table craigslist.search_query add constraint search_query_constraint unique (keyword, min_price, max_price);
