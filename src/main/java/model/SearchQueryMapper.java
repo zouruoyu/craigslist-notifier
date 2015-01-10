@@ -12,6 +12,8 @@ public class SearchQueryMapper implements ResultSetMapper
                 resultSet.getString("keyword"),
                 resultSet.getFloat("min_price"),
                 resultSet.getFloat("max_price"),
+                resultSet.getString("url"),
+                resultSet.getBoolean("by_owner"),
                 new DateTime(resultSet.getTimestamp("created_at").getTime()),
                 new DateTime(resultSet.getTimestamp("updated_at").getTime()));
     }

@@ -11,14 +11,11 @@ public class SearchResult {
 
     @NotNull
     @JsonProperty
-    private long id;
-    @NotNull
-    @JsonProperty
-    private String title;
+    private Long id;
 
     @NotNull
     @JsonProperty
-    private String description;
+    private String title;
 
     @JsonProperty
     private double price;
@@ -27,32 +24,30 @@ public class SearchResult {
     @JsonProperty
     private String url;
 
+    @JsonProperty
+    private long searchQueryId;
+
     @NotNull
     @JsonProperty
     private DateTime postedTime;
 
-    public SearchResult(long id, String title, String description, double price, String url, DateTime postedTime) {
+    public SearchResult(Long id, String title, double price, String url, long searchQueryId, DateTime postedTime) {
         this.id = id;
         this.title = title;
-        this.description = description;
         this.price = price;
         this.url = url;
+        this.searchQueryId = searchQueryId;
         this.postedTime = postedTime;
     }
 
     @JsonProperty
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
     @JsonProperty
     public String getTitle() {
         return title;
-    }
-
-    @JsonProperty
-    public String getDescription() {
-        return description;
     }
 
     @JsonProperty
@@ -66,6 +61,11 @@ public class SearchResult {
     }
 
     @JsonProperty
+    public long getSearchQueryId() {
+        return searchQueryId;
+    }
+
+    @JsonProperty
     public DateTime getPostedTime() {
         return postedTime;
     }
@@ -76,9 +76,9 @@ public class SearchResult {
         return Objects.toStringHelper(this)
                 .add("id", id)
                 .add("title", title)
-                .add("description", description)
                 .add("price", price)
                 .add("url", url)
+                .add("searchQueryId", searchQueryId)
                 .add("postedTime", postedTime)
                 .toString();
     }

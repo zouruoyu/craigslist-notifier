@@ -10,9 +10,9 @@ public class SearchResultMapper implements ResultSetMapper<SearchResult> {
         return new SearchResult(
                 resultSet.getLong("id"),
                 resultSet.getString("title"),
-                resultSet.getString("description"),
                 resultSet.getFloat("price"),
                 resultSet.getString("url"),
+                resultSet.getLong("search_query_id"),
                 new DateTime(resultSet.getTimestamp("posted_time").getTime()));
     }
 }

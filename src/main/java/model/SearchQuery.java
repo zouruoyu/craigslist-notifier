@@ -20,6 +20,12 @@ public class SearchQuery {
     @JsonProperty
     private final double maxPrice;
 
+    @JsonProperty
+    private final String url;
+
+    @JsonProperty
+    private Boolean byOwner = true;
+
     @JsonIgnore
     @JsonProperty
     private final DateTime createdTime;
@@ -33,12 +39,16 @@ public class SearchQuery {
                        @JsonProperty("keyword") final String keyword,
                        @JsonProperty("minPrice") final double minPrice,
                        @JsonProperty("maxPrice") final double maxPrice,
+                       @JsonProperty("url") final String url,
+                       @JsonProperty("byOwner") final Boolean byOwner,
                        @JsonProperty("createTime") final DateTime createdTime,
                        @JsonProperty("updatedTime") final DateTime updatedTime) {
         this.id = id;
         this.keyword = keyword;
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
+        this.url = url;
+        this.byOwner = byOwner;
         this.createdTime = createdTime;
         this.updatedTime = updatedTime;
     }
@@ -59,6 +69,14 @@ public class SearchQuery {
         return maxPrice;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public Boolean getByOwner() {
+        return byOwner;
+    }
+
     public DateTime getCreatedTime()
     {
         return createdTime;
@@ -77,6 +95,8 @@ public class SearchQuery {
                 .add("keyword", keyword)
                 .add("minPrice", minPrice)
                 .add("maxPrice", maxPrice)
+                .add("url", url)
+                .add("byOwner", byOwner)
                 .toString();
     }
 }
