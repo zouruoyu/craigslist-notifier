@@ -2,3 +2,4 @@
 target/
 *.imi
 local.yml
+curl.txt
